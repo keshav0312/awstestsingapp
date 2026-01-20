@@ -3,16 +3,16 @@ spring:
     name: ${APP_NAME:awstestingapp}
 
   datasource:
-    url: ${DB_URL:jdbc:mysql://yamabiko.proxy.rlwy.net:32868/railway}
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:CispgXdLnvqqqObaSmMdORUXvumUfICv}
-#    driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: ${HIBERNATE_DDL:update}
-    show-sql: ${SHOW_SQL:true}
-
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 server:
-  port: ${PORT:8081}
+  port: ${PORT:8080}
