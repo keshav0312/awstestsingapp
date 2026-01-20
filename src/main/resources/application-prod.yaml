@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ${APP_NAME:awstestingapp}
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://yamabiko.proxy.rlwy.net:32868/railway}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:CispgXdLnvqqqObaSmMdORUXvumUfICv}
+#    driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${HIBERNATE_DDL:update}
+    show-sql: ${SHOW_SQL:true}
+
+
+server:
+  port: ${PORT:8081}
