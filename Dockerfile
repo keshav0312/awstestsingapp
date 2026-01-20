@@ -1,14 +1,20 @@
-# 1. Use Java 17 (recommended for Spring Boot)
+# Use Java 17
 FROM eclipse-temurin:17-jdk
 
-# 2. Set working directory
+# Set working directory
 WORKDIR /app
 
-# 3. Copy jar file
-COPY target/*.jar app.jar
+# Copy all project files
+COPY . .
 
-# 4. Expose port (Render uses 8080)
+# Give permission to mvnw
+RUN chmod +x mvnw
+
+# Build the app (skip tests to avoid DB error)
+RUN ./mvnw clean package -DskipTests
+
+# Expose Render port
 EXPOSE 8080
 
-# 5. Run Spring Boot app
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run Spring Boot jar
+CMD ["java", "-jar", "target/app-0.0.1-SNAPSHOT.jar"]
